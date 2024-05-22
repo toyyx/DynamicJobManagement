@@ -3,7 +3,7 @@ package com.example.dynamicjobmanagement.other
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-
+//test
 class Tool: Application() {
     companion object{
         @SuppressLint("StaticFieldLeak")
