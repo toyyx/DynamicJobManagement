@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.HopeSqure.HopeSquareFragment"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="——希望广场"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pan_font"/>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/hopeSquare_TabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/logo_background"
+        app:tabGravity="center"
+        app:tabBackground="@color/logo_background"
+        app:tabTextColor="@color/grey2"
+        app:tabSelectedTextColor="@color/black"
+        app:tabIndicatorColor="@color/purple_500"
+        app:tabIndicatorHeight="5dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorAnimationDuration="5000">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="广场中心"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="我的"/>
+    </com.google.android.material.tabs.TabLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/grey"/>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/hopeSquare_ViewPager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

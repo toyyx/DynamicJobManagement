@@ -1,3 +1,7 @@
 package com.example.dynamicjobmanagement.model.model
 
-data class User(val username: String, val password: String)
+interface User {
+    val account: String//学号或工号
+    val password: String
+    val name: String
+}

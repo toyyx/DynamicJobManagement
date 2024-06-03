@@ -3,38 +3,91 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.dynamicjobmanagement.viewmodel.LoginViewModel" />
+            type="com.example.dynamicjobmanagement.viewmodel.ViewModel.LoginViewModel.LoginViewModel" />
     </data>
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/logo_background">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="——登录"
+            android:textSize="40sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/pan_font"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <EditText
             android:id="@+id/login_userName_EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:hint="请输入工号/学号"
+            android:gravity="center"
             android:inputType="text"
-            android:text="@={viewModel.userName}"/>
+            android:text="@={viewModel.account}"/>
 
         <EditText
             android:id="@+id/login_password_EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:hint="请输入密码"
+            android:gravity="center"
             android:inputType="textPassword"
             android:text="@={viewModel.password}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <CheckBox
+                android:id="@+id/login_userAgreement_CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={viewModel.isUserAgreementChecked}" />
+            <TextView
+                android:text="已阅读并同意"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/login_userAgreement_TextView"
+                android:text="《用户协议》"
+                android:textColor="#0AC4E3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/login_login_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:background="@drawable/rounded_edittext"
+            android:text="登录"
             android:layout_gravity="center"
             android:onClick="@{() -> viewModel.onLoginButtonClicked()}"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"/>
     </LinearLayout>
 
 </layout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/> <!-- 输入框的背景颜色 -->
+    <corners android:radius="50dp"/> <!-- 使形状为椭圆形 -->
+    <stroke
+        android:width="2dp"
+        android:color="#000000"/> <!-- 输入框的边框颜色和宽度 -->
+    <padding
+        android:left="10dp"
+        android:top="10dp"
+        android:right="10dp"
+        android:bottom="10dp"/> <!-- 内边距 -->
+</shape>

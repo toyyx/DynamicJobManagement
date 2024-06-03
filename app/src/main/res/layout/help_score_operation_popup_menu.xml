@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@android:color/white"
+    android:elevation="4dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="作业拼奖惩处理"
+        android:gravity="center"
+        android:background="@color/grey2"/>
+
+    <TextView
+        android:id="@+id/helpScoreOperation_add3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="优质问答"
+        android:gravity="center"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/helpScoreOperation_add1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="一般问答"
+        android:gravity="center"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/helpScoreOperation_lose5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="异常问答"
+        android:gravity="center"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground" />
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.CourseCenter.CourseCenterFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="——课程中心"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pan_font"/>
+    <EditText
+        android:id="@+id/courseCenter_search_EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="搜索课程名称"
+        android:background="@drawable/rounded_edittext"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/courseCenter_RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

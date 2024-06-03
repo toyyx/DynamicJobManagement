@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/solveHelpList_replierName_TextView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="张三"
+            android:textSize="20sp"
+            android:layout_marginLeft="40dp"
+            android:gravity="start|center"/>
+        <ImageButton
+            android:id="@+id/solveHelpList_operation_ImageButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/temp_icon"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/solveHelpList_replyTime_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="昨天 22:40"
+        android:textColor="@color/purple_200"
+        android:gravity="start|center"
+        android:layout_marginLeft="40dp"/>
+    <TextView
+        android:id="@+id/solveHelpList_replyContent_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="帮助内容帮助内容帮助内容帮助内容帮助内容帮助内容帮助内容帮助内容帮助内容帮助内容帮助内容帮助内容帮助内容帮助内容帮助内容"
+        android:maxLines="4"
+        android:ellipsize="end"
+        android:layout_marginHorizontal="40dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_margin="10dp"/>
+</LinearLayout>

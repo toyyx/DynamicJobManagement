@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main_menu_item_CourseCenter"
+        android:icon="@drawable/logo"
+        android:title="课程中心" />
+    <item
+        android:id="@+id/main_menu_item_HopeSquare"
+        android:icon="@drawable/logo"
+        android:title="希望广场" />
+    <item
+        android:id="@+id/main_menu_item_PersonCenter"
+        android:icon="@drawable/logo"
+        android:title="个人中心" />
+</menu>

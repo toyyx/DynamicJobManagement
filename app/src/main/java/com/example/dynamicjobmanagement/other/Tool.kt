@@ -1,17 +1,14 @@
 package com.example.dynamicjobmanagement.other
 
-import android.annotation.SuppressLint
-import android.app.Application
-import android.content.Context
+import org.json.JSONArray
 
-class Tool: Application() {
-    companion object{
-        @SuppressLint("StaticFieldLeak")
-        lateinit var context: Context//全局通用上下文
-    }
-    override fun onCreate() {
-        super.onCreate()
-        context =applicationContext
-        val test=123    //test
+object Tool {
+    fun getListFromJSONArray(jsonArray: JSONArray):MutableList<String>{
+        val list = mutableListOf<String>()
+        for (i in 0 until jsonArray.length()) {
+            val item = jsonArray.getString(i)
+            list.add(item)
+        }
+        return list
     }
 }
