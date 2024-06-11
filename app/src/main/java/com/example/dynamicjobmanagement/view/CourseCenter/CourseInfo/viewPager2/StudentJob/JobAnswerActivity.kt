@@ -61,7 +61,7 @@ class JobAnswerActivity : AppCompatActivity() {
         // 观察ViewModel中的数据变化
         viewModel.acquireJobAnswerResult.observe(this, Observer { result ->
             result.onSuccess {info ->
-                Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
             }

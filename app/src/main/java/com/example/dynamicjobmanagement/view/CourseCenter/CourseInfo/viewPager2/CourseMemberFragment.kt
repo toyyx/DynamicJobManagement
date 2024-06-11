@@ -58,7 +58,7 @@ class CourseMemberFragment : Fragment() {
             result.onSuccess {info ->
                 // 更新Adapter中的数据
                 adapter.setData(viewModel.filteredMembers.value!!)
-                Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 println("error:${exception.message}")
                 Toast.makeText(requireContext(), exception.message, Toast.LENGTH_SHORT).show()

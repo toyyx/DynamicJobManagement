@@ -127,7 +127,7 @@ class CourseJobViewModel(jobIdList_init:List<String>?): ViewModel() {
                     // 读取特定键的值
                     val result = jsonObject!!.get("result")!!.asString
                     if (result == "success") {
-                        exportJobAnswerToExcelResult.postValue(Result.success("作业情况获取成功"))
+//                        exportJobAnswerToExcelResult.postValue(Result.success("作业情况获取成功"))
                         //获取课程详细信息
                         val jobAnswerJsonArray=jsonObject.getAsJsonArray("jobDetailInfo")
                         val jobAnswerListType = object : TypeToken<List<JobAnswer>>() {}.type
@@ -195,11 +195,12 @@ class CourseJobViewModel(jobIdList_init:List<String>?): ViewModel() {
             workbook.write(fileOut)
             fileOut.close()
             workbook.close()
-            exportJobAnswerToExcelResult.postValue(Result.success("文件导出成功，文件位置:${filePath}"))
+
+//            exportJobAnswerToExcelResult.postValue(Result.success("文件导出成功，文件位置:${filePath}"))
             println("文件导出成功，文件位置:${filePath}")
             // 检查文件是否创建成功
             if (file.exists()) {
-                val successMessage = "文件找到，文件位置: ${filePath}"
+                val successMessage = "文件导出成功，文件位置: ${filePath}"
                 exportJobAnswerToExcelResult.postValue(Result.success(successMessage))
 
             } else {
@@ -223,7 +224,7 @@ class CourseJobViewModel(jobIdList_init:List<String>?): ViewModel() {
                     // 读取特定键的值
                     val result = jsonObject!!.get("result")!!.asString
                     if (result == "success") {
-                        exportHelpToExcelResult.postValue(Result.success("作业拼情况获取成功"))
+//                        exportHelpToExcelResult.postValue(Result.success("作业拼情况获取成功"))
                         // 创建 GsonBuilder 实例，并注册 LocalDateTimeAdapter
                         val gson = GsonBuilder()
                             .registerTypeAdapter(LocalDateTime::class.java, LocalDateTimeAdapter())
@@ -253,7 +254,8 @@ class CourseJobViewModel(jobIdList_init:List<String>?): ViewModel() {
                 directory.mkdirs()
             }
             // 创建 Excel 文件
-            val filePath = File(directory, "${excelName}.xlsx").absolutePath
+            val file = File(directory, "$excelName.xlsx")
+            val filePath = file.absolutePath
 
             // 创建 Excel 工作簿
             val workbook = XSSFWorkbook()
@@ -335,7 +337,15 @@ class CourseJobViewModel(jobIdList_init:List<String>?): ViewModel() {
             workbook.write(fileOut)
             fileOut.close()
             workbook.close()
-            exportHelpToExcelResult.postValue(Result.success("文件导出成功，文件位置:${filePath}"))
+            // 检查文件是否创建成功
+            if (file.exists()) {
+                val successMessage = "文件导出成功，文件位置: ${filePath}"
+                exportHelpToExcelResult.postValue(Result.success(successMessage))
+
+            } else {
+                val errorMessage = "文件导出失败，文件未找到: ${filePath}"
+                exportHelpToExcelResult.postValue(Result.failure(Exception(errorMessage)))
+            }
         }catch (e: Exception) {
             exportHelpToExcelResult.postValue(Result.failure(e))
         }

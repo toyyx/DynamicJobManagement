@@ -27,10 +27,6 @@ interface ApiService {
     suspend fun acquireJobDetail(@Body jobIdList: List<String>?): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("acquireJobDetail_courseId_android")
-    suspend fun acquireJobDetail_courseId(@Field("courseId") courseId: Int): Response<JsonObject>
-
-    @FormUrlEncoded
     @POST("AcquireJobAnswer_android")
     suspend fun acquireJobAnswer(@Field("studentId") studentId: Int, @Field("jobId") jobId: Int): Response<JsonObject>
 

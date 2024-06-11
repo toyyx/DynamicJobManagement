@@ -60,7 +60,7 @@ class CourseCenterFragment : Fragment() , CourseListAdapter.OnCourseClickListene
             result.onSuccess {info ->
                 // 更新Adapter中的数据
                 adapter.setData(CourseRepository.getCourseDetailList()!!)
-                Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 Toast.makeText(requireContext(), exception.message, Toast.LENGTH_SHORT).show()
             }

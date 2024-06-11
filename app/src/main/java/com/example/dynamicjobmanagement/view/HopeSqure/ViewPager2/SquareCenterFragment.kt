@@ -101,7 +101,7 @@ class SquareCenterFragment : Fragment() , SeekHelpListAdapter.OnSeekHelpClickLis
                     first=false
                 }
 
-                Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 Toast.makeText(requireContext(), exception.message, Toast.LENGTH_SHORT).show()
             }
@@ -125,7 +125,7 @@ class SquareCenterFragment : Fragment() , SeekHelpListAdapter.OnSeekHelpClickLis
 
     override fun onResume() {
         super.onResume()
-        Toast.makeText(requireContext(), "onResume", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireContext(), "onResume", Toast.LENGTH_SHORT).show()
         lifecycleScope.launch {
             viewModel.acquireSeekHelp()
             delay(500)

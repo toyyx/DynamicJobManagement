@@ -48,15 +48,15 @@ class PublishJobActivity : AppCompatActivity() {
         }
 
         findViewById<DatePicker>(R.id.punishJob_startDate_DatePicker).setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
-            Toast.makeText(this, "开始日期初始为${viewModel.startDateTime}", Toast.LENGTH_SHORT).show()
-            Toast.makeText(this, "选择为\"$year-${monthOfYear + 1}-$dayOfMonth\"", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "开始日期初始为${viewModel.startDateTime}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "选择为\"$year-${monthOfYear + 1}-$dayOfMonth\"", Toast.LENGTH_SHORT).show()
             viewModel.setStartDate(year, monthOfYear+1, dayOfMonth)
-            Toast.makeText(this, "开始日期变化为${viewModel.startDateTime}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "开始日期变化为${viewModel.startDateTime}", Toast.LENGTH_SHORT).show()
         }
 
         findViewById<DatePicker>(R.id.punishJob_endDate_DatePicker).setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
             viewModel.setEndDate(year, monthOfYear+1, dayOfMonth)
-            Toast.makeText(this, "结束日期变化为${viewModel.endDateTime}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "结束日期变化为${viewModel.endDateTime}", Toast.LENGTH_SHORT).show()
             // 观察ViewModel中的数据变化
         }
 

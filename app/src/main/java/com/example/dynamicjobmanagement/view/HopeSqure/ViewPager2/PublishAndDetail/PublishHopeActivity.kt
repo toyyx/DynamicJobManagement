@@ -63,12 +63,10 @@ class PublishHopeActivity : AppCompatActivity() {
         }
 
 
-
-
         // 观察ViewModel中的数据变化
         viewModel.initSpannerResult.observe(this, Observer { result ->
             result.onSuccess {info ->
-                Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
             }
@@ -76,15 +74,14 @@ class PublishHopeActivity : AppCompatActivity() {
 
         viewModel.acquireJobResult.observe(this, Observer { result ->
             result.onSuccess {info ->
-                Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 Toast.makeText(this,"xxxx", Toast.LENGTH_SHORT).show()
             }
         })
 
         viewModel.selectedCoursePosition.observe(this) {
-
-            Toast.makeText(this, "课程位置已变化", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "课程位置已变化", Toast.LENGTH_SHORT).show()
             if(check){
                 synchronized(lock) {
                     println("课程位置已变化${preventFresh}")
@@ -99,7 +96,6 @@ class PublishHopeActivity : AppCompatActivity() {
                 viewModel.acquireJobList()
             }
 
-
         }
 
         viewModel.publishSeekHelpResult.observe(this, Observer { result ->
@@ -113,7 +109,7 @@ class PublishHopeActivity : AppCompatActivity() {
 
         // 观察ViewModel中的数据变化
         viewModel.jobSpinnerItems.observe(this, Observer { newData ->
-            Toast.makeText(this, "已更新", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "已更新", Toast.LENGTH_SHORT).show()
             jobSpinnerAdapter.clear()
             // 添加新数据
             jobSpinnerAdapter.addAll(newData)
@@ -124,8 +120,6 @@ class PublishHopeActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.publishHope_back_ImageView).setOnClickListener {
             finish()
         }
-
-
 
     }
 }

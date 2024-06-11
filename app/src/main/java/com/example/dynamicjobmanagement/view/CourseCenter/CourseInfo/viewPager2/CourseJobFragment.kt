@@ -85,7 +85,7 @@ class CourseJobFragment : Fragment() , CourseJobAdapter.OnJobClickListener,
 
         refresh_SRL=view.findViewById<SwipeRefreshLayout>(R.id.courseJob_SwipeRefreshLayout)
         refresh_SRL.setOnRefreshListener {
-            Toast.makeText(requireContext(), "refresh_SRL", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), "refresh_SRL", Toast.LENGTH_SHORT).show()
             viewModel.refreshCourse()
             refresh_SRL.isRefreshing = false
         }
@@ -97,7 +97,7 @@ class CourseJobFragment : Fragment() , CourseJobAdapter.OnJobClickListener,
                 viewModel_activity.course.value=CourseRepository.getCourseDetailList()!!.find{it.courseId == viewModel_activity.course.value!!.courseId}
                 viewModel.jobIdList= viewModel_activity.course.value!!.jobList
                 viewModel.refreshJob()
-                Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 println("error:${exception.message}")
                 Toast.makeText(requireContext(), exception.message, Toast.LENGTH_SHORT).show()
@@ -111,7 +111,7 @@ class CourseJobFragment : Fragment() , CourseJobAdapter.OnJobClickListener,
                     adapter_ForStudent.setData(viewModel.jobList.value!!)
                 else
                     adapter_ForTeacher.setData(viewModel.jobList.value!!)
-                Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 println("error:${exception.message}")
                 Toast.makeText(requireContext(), exception.message, Toast.LENGTH_SHORT).show()
@@ -242,11 +242,9 @@ class CourseJobFragment : Fragment() , CourseJobAdapter.OnJobClickListener,
 
     override fun refreshData() {
         if(::viewModel.isInitialized){
-            Toast.makeText(requireContext(), "正在刷新数据", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), "正在刷新数据", Toast.LENGTH_SHORT).show()
             viewModel.refreshCourse()
         }
-
-
     }
 
     companion object {

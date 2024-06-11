@@ -112,7 +112,7 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
                 findViewById<TextView>(R.id.hopeDetail_solveNum_TextView).text="帮助记录(${viewModel.solveHelpList.value!!.size})"
                 // 更新Adapter中的数据
                 adapter.setData(viewModel.solveHelpList.value!!)
-                Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
             }
@@ -129,7 +129,7 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
                 zanPerform(addLike_IV)
                 seekHelp.likeNumber++
                 likeNum_TV.text=seekHelp.likeNumber.toString()
-                Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
             }
@@ -305,39 +305,12 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
 
 
     fun zanPerform(view: ImageView){
+        view.setImageResource(R.drawable.zan2)
 
-            view.setImageResource(R.drawable.zan2)
+        // 添加缩放动画
+        val anim: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_anim)
+        view.startAnimation(anim)
 
-            // 添加缩放动画
-            val anim: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_anim)
-            view.startAnimation(anim)
-
-    }
-
-    private fun performLikeAnimation(view: ImageView) {
-        // Scale up X and Y
-        val scaleUpX = ObjectAnimator.ofFloat(view, "scaleX", 1f, 1.5f)
-        val scaleUpY = ObjectAnimator.ofFloat(view, "scaleY", 1f, 1.5f)
-
-        // Scale down X and Y
-        val scaleDownX = ObjectAnimator.ofFloat(view, "scaleX", 1.5f, 1f)
-        val scaleDownY = ObjectAnimator.ofFloat(view, "scaleY", 1.5f, 1f)
-
-        // Change color
-        val colorChange = ObjectAnimator.ofArgb(
-            view.drawable,
-            "tint",
-            ContextCompat.getColor(this, R.color.grey4),
-            ContextCompat.getColor(this,R.color.pink)
-        )
-
-        // Create an AnimatorSet to play animations together
-        val animatorSet = AnimatorSet()
-        animatorSet.playTogether(scaleUpX, scaleUpY)
-        animatorSet.play(scaleDownX).with(scaleDownY).after(scaleUpX)
-        animatorSet.play(colorChange).after(scaleUpX)
-        animatorSet.duration = 300
-        animatorSet.start()
     }
 
     override fun onDestroy() {
