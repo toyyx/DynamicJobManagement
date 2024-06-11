@@ -3,12 +3,14 @@ package com.example.dynamicjobmanagement.view.Adapter.CourseCenter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dynamicjobmanagement.R
 import com.example.dynamicjobmanagement.model.model.Course
 import com.example.dynamicjobmanagement.model.model.Job
+import java.time.format.DateTimeFormatter
 
 class CourseJobAdapter_Teacher(private var course : Course, private val clickListener: OnTeacherJobClickListener): RecyclerView.Adapter<CourseJobAdapter_Teacher.ViewHolder>() {
     private var jobList = listOf<Job>()
@@ -28,12 +30,12 @@ class CourseJobAdapter_Teacher(private var course : Course, private val clickLis
         private val endTime_TV: TextView = itemView.findViewById(R.id.courseJobForTeacher_endTime_TextView)
         private val commitNum_TV: TextView = itemView.findViewById(R.id.courseJobForTeacher_commitNum_TextView)
         private val memberNum_TV: TextView = itemView.findViewById(R.id.courseJobForTeacher_memberNum_TextView)
-        private val operation_IB: TextView = itemView.findViewById(R.id.courseJobForTeacher_operation_ImageButton)
+        private val operation_IB: ImageButton = itemView.findViewById(R.id.courseJobForTeacher_operation_ImageButton)
 
         fun bind(course:Course, job: Job, clickListener: OnTeacherJobClickListener) {
             title_TV.text = job.jobTitle
-            endTime_TV.text = job.endTime.toString()
-            commitNum_TV.text = job.commitNum.toString()
+            endTime_TV.text = job.endTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+            commitNum_TV.text = job.commitNumber.toString()
             memberNum_TV.text=course.studentList.size.toString()
             itemView.setOnClickListener {
                 clickListener.onTeacherJobClick(job)

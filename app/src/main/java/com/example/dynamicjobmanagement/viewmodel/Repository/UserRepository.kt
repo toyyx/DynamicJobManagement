@@ -59,16 +59,16 @@ object UserRepository {
 
     fun setUser(user:Student) {
         this.userType=UserType.STUDENT
-        this.user = user
+        this.user = User(user.account,user.password,user.name)
         this.user_Student=user
-        saveUser(user)
+        saveUser(this.user!!)
     }
 
     fun setUser(user:Teacher) {
         this.userType=UserType.TEACHER
-        this.user = user
+        this.user = User(user.account,user.password,user.name)
         this.user_Teacher=user
-        saveUser(user)
+        saveUser(this.user!!)
     }
 
     fun getUser():User{

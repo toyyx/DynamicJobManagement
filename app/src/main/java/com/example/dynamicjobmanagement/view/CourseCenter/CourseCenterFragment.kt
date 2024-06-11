@@ -18,7 +18,7 @@ import com.example.dynamicjobmanagement.R
 import com.example.dynamicjobmanagement.model.model.Course
 import com.example.dynamicjobmanagement.view.Adapter.CourseCenter.CourseListAdapter
 import com.example.dynamicjobmanagement.view.CourseCenter.CourseInfo.CourseInformationActivity
-import com.example.dynamicjobmanagement.viewmodel.ViewModel.CourseCenterViewModel.CourseInfoViewModel.CourseCenterViewModel
+import com.example.dynamicjobmanagement.viewmodel.viewModel.courseCenterViewModel.courseInfoViewModel.CourseCenterViewModel
 import com.example.dynamicjobmanagement.viewmodel.Repository.CourseRepository
 
 // TODO: Rename parameter arguments, choose names that match

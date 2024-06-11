@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import com.example.dynamicjobmanagement.R
-import com.example.dynamicjobmanagement.view.Login.LoginActivity
+import com.example.dynamicjobmanagement.view.login.LoginActivity
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

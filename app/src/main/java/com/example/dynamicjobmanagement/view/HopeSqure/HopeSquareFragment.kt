@@ -1,5 +1,6 @@
 package com.example.dynamicjobmanagement.view.HopeSqure
 
+import com.example.dynamicjobmanagement.model.model.Refreshable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,14 +36,28 @@ class HopeSquareFragment : Fragment() {
         // 将TabLayout与ViewPager2关联
         TabLayoutMediator(tabLayout, viewPager) {
                 tab, position ->
-//            // 根据position设置Tab的标题
-//            tab.text = when (position) {
-//                0 -> "基本信息"
-//                1 -> "作业"
-//                2 -> "成员"
-//                else -> throw IllegalArgumentException("Invalid position")
-//            }
+            // 根据position设置Tab的标题
+            tab.text = when (position) {
+                0 -> "广场中心"
+                1 -> "我的"
+                else -> throw IllegalArgumentException("Invalid position")
+            }
         }.attach()
+
+//        // 设置页面变化监听器
+//        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+//            override fun onPageSelected(position: Int) {
+//                super.onPageSelected(position)
+//                // 获取当前的 Fragment
+//                val fragment = adapter.getFragment(position)
+//                // 检查 Fragment 是否实现了 Refreshable 接口
+//                if (fragment is Refreshable) {
+//                    fragment.refreshData()
+//                }
+//            }
+//        })
+
+
         return view
     }
 

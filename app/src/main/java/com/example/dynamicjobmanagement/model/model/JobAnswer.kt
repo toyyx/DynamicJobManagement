@@ -5,5 +5,5 @@ data class JobAnswer (
     val studentId:Int,
     var studentName: String,
     var answer: String,
-    val score:Double
+    val score:Double?
 )

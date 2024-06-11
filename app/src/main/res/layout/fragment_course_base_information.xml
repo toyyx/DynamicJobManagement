@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CourseCenter.CourseInfo.ViewPager2.CourseBaseInformationFragment"
+    tools:context=".view.CourseCenter.CourseInfo.viewPager2.CourseBaseInformationFragment"
     android:orientation="vertical">
 
     <LinearLayout

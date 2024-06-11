@@ -3,6 +3,7 @@ package com.example.dynamicjobmanagement.viewmodel.Repository
 import com.example.dynamicjobmanagement.model.model.SeekHelp
 import com.example.dynamicjobmanagement.model.model.SolveHelp
 import com.example.dynamicjobmanagement.model.network.RetrofitClient
+import com.google.gson.JsonObject
 
 object HelpRepository {
     private var seekHelpList:List<SeekHelp>?=null
@@ -21,10 +22,10 @@ object HelpRepository {
 
     suspend fun addLikeToSeekHelp(seekId:Int) = RetrofitClient.apiService.AddLikeToSeekHelp(seekId)
 
-    suspend fun addCommentToSeekHelp(comment:SolveHelp) = RetrofitClient.apiService.AddCommentToSeekHelp(comment)
+    suspend fun addCommentToSeekHelp(comment:JsonObject) = RetrofitClient.apiService.AddCommentToSeekHelp(comment)
 
     suspend fun acquirePersonalSeekHelp(userId:Int) = RetrofitClient.apiService.AcquirePersonalSeekHelp(userId)
 
-    suspend fun publishSeekHelp(seekHelp:SeekHelp) = RetrofitClient.apiService.PublishSeekHelp(seekHelp)
+    suspend fun publishSeekHelp(seekHelp:JsonObject) = RetrofitClient.apiService.PublishSeekHelp(seekHelp)
 
 }

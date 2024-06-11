@@ -1,0 +1,13 @@
+<!-- res/drawable/textview_border.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/white"/> <!-- 背景颜色，可以根据需要调整 -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/grey2"/> <!-- 边框宽度和颜色，可以根据需要调整 -->
+    <padding
+        android:left="4dp"
+        android:top="4dp"
+        android:right="4dp"
+        android:bottom="4dp"/> <!-- 内边距，可以根据需要调整 -->
+    <corners android:radius="4dp"/> <!-- 边框圆角半径，可以根据需要调整 -->
+</shape>

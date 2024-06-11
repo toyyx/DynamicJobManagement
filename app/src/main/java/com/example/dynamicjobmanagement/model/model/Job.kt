@@ -10,5 +10,5 @@ data class Job(
     val requirement: String,
     val startTime: LocalDateTime,
     val endTime: LocalDateTime,
-    val commitNum: Int
+    val commitNumber: Int
 ): Serializable

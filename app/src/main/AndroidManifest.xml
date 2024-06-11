@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,13 +17,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".view.CourseCenter.CourseInfo.ViewPager2.TeacherJob.CheckJobActivity"
+            android:name=".view.CourseCenter.CourseInfo.viewPager2.StudentJob.JobAnswerActivity"
             android:exported="false" />
         <activity
-            android:name=".view.CourseCenter.CourseInfo.ViewPager2.TeacherJob.PublishJobActivity"
+            android:name=".view.CourseCenter.CourseInfo.viewPager2.TeacherJob.CheckJobActivity"
             android:exported="false" />
         <activity
-            android:name=".view.CourseCenter.CourseInfo.ViewPager2.TeacherJob.TeacherJobDetailActivity"
+            android:name=".view.CourseCenter.CourseInfo.viewPager2.TeacherJob.PublishJobActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.CourseCenter.CourseInfo.viewPager2.TeacherJob.TeacherJobDetailActivity"
             android:exported="false" />
         <activity
             android:name=".view.HopeSqure.ViewPager2.PublishAndDetail.HopeDetailActivity"
@@ -46,7 +50,7 @@
             android:name=".view.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".view.Login.LogoActivity"
+            android:name=".view.login.LogoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,7 +59,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.Login.LoginActivity"
+            android:name=".view.login.LoginActivity"
             android:exported="true" />
     </application>
 

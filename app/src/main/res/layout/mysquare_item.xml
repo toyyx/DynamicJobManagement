@@ -13,6 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="软件工程-作业六"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:gravity="center"/>
         <View
@@ -22,7 +23,8 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/temp_icon"/>
+            android:padding="5dp"
+            android:src="@drawable/zan"/>
         <TextView
             android:id="@+id/mySquare_likeNum_TextView"
             android:layout_width="wrap_content"
@@ -32,7 +34,8 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/temp_icon"
+            android:src="@drawable/comment"
+            android:padding="5dp"
             android:layout_marginLeft="20dp"/>
         <TextView
             android:id="@+id/mySquare_commentNum_TextView"

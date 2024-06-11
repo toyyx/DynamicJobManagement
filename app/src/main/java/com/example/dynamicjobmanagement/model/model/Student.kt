@@ -1,12 +1,17 @@
 package com.example.dynamicjobmanagement.model.model
 
-data class Student(
-    val studentId:Int,
-    override val account: String,//学号
-    override val password: String,
-    override val name: String,
-    val university: String,
-    val college: String,
-    val stu_class: String,
+class Student(
+    val studentId:Int=-1,
+    val account: String,//学号
+    val password: String,
+    val name: String,
+    val university: String="",
+    val college: String="",
+    val stu_class: String="",
     val courseList: List<String>
-): User
+){
+
+     //无参构造函数
+    constructor() : this(0, "", "", "", "",  "", "",mutableListOf())
+}
+

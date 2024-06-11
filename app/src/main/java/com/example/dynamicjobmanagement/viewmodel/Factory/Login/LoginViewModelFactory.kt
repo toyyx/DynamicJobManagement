@@ -2,7 +2,7 @@ package com.example.dynamicjobmanagement.viewmodel.Factory.Login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.dynamicjobmanagement.viewmodel.ViewModel.LoginViewModel.LoginViewModel
+import com.example.dynamicjobmanagement.viewmodel.viewModel.loginViewModel.LoginViewModel
 
 class LoginViewModelFactory() : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

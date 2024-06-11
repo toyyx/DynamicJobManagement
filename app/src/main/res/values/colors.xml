@@ -10,4 +10,14 @@
     <color name="logo_background">#FCFDF5</color>
     <color name="grey">#FFF2F1F6</color>
     <color name="grey2">#FF9C9E9E</color>
+    <color name="grey3">#B5B5B5</color>
+    <color name="grey4">#8a8a8a</color>
+    <color name="faint_yellow">#FFF8DC</color>
+    <color name="wheat_color">#F5DEB3</color>
+    <color name="cream_coloured">#FFE4B5</color>
+    <color name="dark_yellow">#CFB993</color>
+    <color name="sky_blue">#75C3FD</color>
+    <color name="qing">#4CD1C5</color>
+    <color name="pink">#FFA1DA</color>
+
 </resources>

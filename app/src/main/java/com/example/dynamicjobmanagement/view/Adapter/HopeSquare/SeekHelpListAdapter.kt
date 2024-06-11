@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dynamicjobmanagement.R
 import com.example.dynamicjobmanagement.model.model.SeekHelp
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class SeekHelpListAdapter(private val clickListener: OnSeekHelpClickListener): RecyclerView.Adapter<SeekHelpListAdapter.ViewHolder>() {
     private var seekHelpList = listOf<SeekHelp>()
@@ -40,10 +41,10 @@ class SeekHelpListAdapter(private val clickListener: OnSeekHelpClickListener): R
                     0 -> time_TV.text = "今天 ${publishTime.toLocalTime()}"
                     -1 -> time_TV.text = "昨天 ${publishTime.toLocalTime()}"
                     -2 -> time_TV.text = "前天 ${publishTime.toLocalTime()}"
-                    else ->time_TV.text = publishTime.toString()
+                    else ->time_TV.text = publishTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
                 }
             }else
-                time_TV.text = publishTime.toString()
+                time_TV.text = publishTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
 
             seekerName_TV.text = seekHelp.seekerName
             content_TV.text = seekHelp.seekContent

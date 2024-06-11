@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.dynamicjobmanagement.viewmodel.ViewModel.LoginViewModel.LoginViewModel" />
+            type="com.example.dynamicjobmanagement.viewmodel.viewModel.loginViewModel.LoginViewModel" />
     </data>
 
     <LinearLayout
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/logo_background">
+        android:background="@color/faint_yellow">
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"

@@ -13,7 +13,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 //⑦参与拼作业表solve_help: solveId seekId studentId content score
 
 object RetrofitClient {
-    private const val BASE_URL = "http://47.103.72.193:8080/jobmanagement_server-1.0-SNAPSHOT/" // 基本URL
+    private const val BASE_URL = "http://47.103.72.193/" // 基本URL
 
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

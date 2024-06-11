@@ -3,7 +3,7 @@ package com.example.dynamicjobmanagement.viewmodel.Factory.HopeSquareFactory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.dynamicjobmanagement.model.model.SeekHelp
-import com.example.dynamicjobmanagement.viewmodel.ViewModel.HopeSquareViewModel.HopeDetailViewModel
+import com.example.dynamicjobmanagement.viewmodel.viewModel.hopeSquareViewModel.HopeDetailViewModel
 
 class HopeDetailViewModelFactory(private val seekHelp:SeekHelp): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

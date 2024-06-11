@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:text="昨天 22:40"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/sky_blue"
             android:gravity="start|center"
             android:layout_marginLeft="40dp"/>
         <TextView
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/grey"
-        android:layout_margin="10dp"/>
+        android:layout_margin="5dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,9 +61,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"/>
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/temp_icon"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/zan"/>
         <TextView
             android:id="@+id/seekHelpList_likeNum_TextView"
             android:layout_width="wrap_content"
@@ -75,9 +76,10 @@
             android:layout_height="match_parent"
             android:layout_weight="2"/>
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/temp_icon"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/comment"/>
         <TextView
             android:id="@+id/seekHelpList_commentNum_TextView"
             android:layout_width="wrap_content"
@@ -91,7 +93,7 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="10dp"
         android:background="@color/grey"
-        android:layout_marginHorizontal="10dp"/>
+        android:layout_marginVertical="10dp"/>
 </LinearLayout>

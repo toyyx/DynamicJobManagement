@@ -12,7 +12,7 @@
         android:padding="8dp"
         android:text="作业拼奖惩处理"
         android:gravity="center"
-        android:background="@color/grey2"/>
+        android:background="@color/faint_yellow"/>
 
     <TextView
         android:id="@+id/helpScoreOperation_add3"

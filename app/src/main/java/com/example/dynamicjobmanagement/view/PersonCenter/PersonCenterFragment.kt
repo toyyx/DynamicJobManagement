@@ -41,12 +41,12 @@ class PersonCenterFragment : Fragment() {
             startActivity(intent)
         }
 
-        view.findViewById<LinearLayout>(R.id.personCenter_toPersonalInfo_TextView).setOnClickListener {
+        view.findViewById<LinearLayout>(R.id.personCenter_toPersonalInfo_LinearLayout).setOnClickListener {
             val intent = Intent(context, PersonalInformationActivity::class.java)
             startActivity(intent)
         }
 
-        view.findViewById<LinearLayout>(R.id.personCenter_toSettings_TextView).setOnClickListener {
+        view.findViewById<LinearLayout>(R.id.personCenter_toSettings_LinearLayout).setOnClickListener {
             val intent = Intent(context, SettingsActivity::class.java)
             startActivity(intent)
         }

@@ -1,91 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewModel"
-            type="com.example.dynamicjobmanagement.viewmodel.ViewModel.CourseCenterViewModel.CourseInfoViewModel.TeacherJobViewModel.CheckJobViewModel" />
+            type="com.example.dynamicjobmanagement.viewmodel.viewModel.courseCenterViewModel.courseInfoViewModel.teacherJobViewModel.CheckJobViewModel" />
     </data>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.CourseCenter.CourseInfo.ViewPager2.TeacherJob.CheckJobActivity"
-        android:orientation="vertical">
+        tools:context=".view.CourseCenter.CourseInfo.viewPager2.TeacherJob.CheckJobActivity"
+        android:orientation="vertical"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal_200"
+            android:background="@color/wheat_color"
             android:orientation="horizontal">
             <ImageView
-
-                android:layout_width="60dp"
+                android:id="@+id/checkJob_back_ImageView"
+                android:layout_width="40dp"
                 android:layout_marginLeft="8dp"
-                android:layout_height="60dp"
-                android:src="@drawable/temp_icon" />
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/back" />
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="批改作业"
                 android:gravity="start|center"
                 android:layout_margin="10dp"
-                android:textSize="20sp"/>
+                android:textSize="25sp"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="作业要求"
-            android:textSize="20sp"
-            android:layout_marginLeft="10dp"/>
+            android:textColor="@color/black"
+            android:background="@color/faint_yellow"
+            android:paddingHorizontal="25dp"
+            android:textSize="25sp" />
         <TextView
             android:id="@+id/checkJob_jobRequirement_TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:padding="10dp"
             android:hint="这是作业要求这是作业要求这是作业要求这是作业要求这是作业要求这是作业要求这是作业要求这是作业要求这是作业要求"
-            android:textSize="15sp"/>
-        <TextView
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="学生回答"
-            android:textSize="20sp"
-            android:layout_marginLeft="10dp"/>
+            android:orientation="horizontal"
+            android:background="@color/faint_yellow">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学生回答"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:paddingStart="25dp"
+                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(来自："
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/checkJob_studentName_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="张三"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=")"
+                android:textSize="20sp" />
+        </LinearLayout>
+
         <EditText
             android:id="@+id/checkJob_studentAnswer_EditText"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:hint="学生回答内容"
+            android:hint="暂无待批改作业"
             android:gravity="top|start"
-            android:background="@color/grey2"
             android:enabled="false"
+            android:background="@drawable/textview_border_white"
             android:text="@={viewModel.studentAnswer}"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="20dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="评分"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:gravity="center" />
             <EditText
                 android:id="@+id/checkJob_teacherScore_EditText"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/textview_border_white"
+                android:enabled="false"
                 android:hint="请填写评分"
-                android:text="@={viewModel.score}"
-                android:enabled="false"/>
+                android:inputType="number"
+                android:layout_marginHorizontal="10dp"
+                android:text="@={viewModel.score}" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="保存并批改下一份"
+                android:textColor="@color/white"
+                android:backgroundTint="#54C3F5"
                 android:onClick="@{()->viewModel.saveAndNext()}"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/grey3"/>
 
 
     </LinearLayout>

@@ -12,6 +12,7 @@ import com.example.dynamicjobmanagement.model.model.SolveHelp
 import com.example.dynamicjobmanagement.model.model.UserType
 import com.example.dynamicjobmanagement.viewmodel.Repository.UserRepository
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class SolveHelpListAdapter(val clickerLister: OnHelpOperationClickListener): RecyclerView.Adapter<SolveHelpListAdapter.ViewHolder>() {
     private var solveHelpList = listOf<SolveHelp>()
@@ -41,10 +42,10 @@ class SolveHelpListAdapter(val clickerLister: OnHelpOperationClickListener): Rec
                     0 -> time_TV.text = "今天 ${publishTime.toLocalTime()}"
                     -1 -> time_TV.text = "昨天 ${publishTime.toLocalTime()}"
                     -2 -> time_TV.text = "前天 ${publishTime.toLocalTime()}"
-                    else ->time_TV.text = publishTime.toString()
+                    else ->time_TV.text = publishTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
                 }
             }else
-                time_TV.text = publishTime.toString()
+                time_TV.text = publishTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
 
             content_TV.text = solveHelp.replyContent
 

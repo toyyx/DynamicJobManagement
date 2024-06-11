@@ -14,74 +14,81 @@ import retrofit2.http.POST
 interface ApiService {
 
     @FormUrlEncoded
-    @POST("LoginServlet")
-    suspend fun login(@Field("account") account: String, @Field("password") password: String): Response<JsonObject>
+    @POST("login_android")
+    suspend fun login(@Field("username") account: String, @Field("password") password: String): Response<JsonObject>
 
-    @POST("AcquireCourseServlet")
+    @POST("AcquireCourse_android")
     suspend fun acquireCourse(@Body courseIdList: List<String>?): Response<JsonObject>
 
-    @POST("AcquireMemberDetailServlet")
+    @POST("AcquireMemberDetail_android")
     suspend fun acquireMemberDetail(@Body memberIdList: List<String>?): Response<JsonObject>
 
-    @POST("AcquireJobDetailServlet")
+    @POST("AcquireJobDetail_android")
     suspend fun acquireJobDetail(@Body jobIdList: List<String>?): Response<JsonObject>
+
     @FormUrlEncoded
-    @POST("AcquireJobAnswerServlet")
+    @POST("acquireJobDetail_courseId_android")
+    suspend fun acquireJobDetail_courseId(@Field("courseId") courseId: Int): Response<JsonObject>
+
+    @FormUrlEncoded
+    @POST("AcquireJobAnswer_android")
     suspend fun acquireJobAnswer(@Field("studentId") studentId: Int, @Field("jobId") jobId: Int): Response<JsonObject>
 
-    @POST("CommitJobAnswerServlet")
+    @POST("CommitJobAnswer_android")
     suspend fun CommitJobAnswer(@Body jobAnswer: JobAnswer): Response<JsonObject>
     @FormUrlEncoded
-    @POST("AcquireSeekHelpServlet")
+    @POST("AcquireSeekHelp_android")
     suspend fun AcquireSeekHelp(@Field("identity") identity: String): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("AcquireSolveHelpServlet")
+    @POST("AcquireSolveHelp_android")
     suspend fun AcquireSolveHelp(@Field("seekHelpId") seekHelpId: Int): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("AddLikeToSeekHelpServlet")
+    @POST("AddLikeToSeekHelp_android")
     suspend fun AddLikeToSeekHelp(@Field("seekHelpId") seekHelpId: Int): Response<JsonObject>
 
 
-    @POST("AddCommentToSeekHelpServlet")
-    suspend fun AddCommentToSeekHelp(@Body comment: SolveHelp): Response<JsonObject>
+    @POST("AddCommentToSeekHelp_android")
+    suspend fun AddCommentToSeekHelp(@Body comment: JsonObject): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("AcquirePersonalSeekHelpServlet")
+    @POST("AcquirePersonalSeekHelp_android")
     suspend fun AcquirePersonalSeekHelp(@Field("userId") userId: Int): Response<JsonObject>
 
-    @POST("PublishSeekHelpServlet")
-    suspend fun PublishSeekHelp(@Body seekHelp: SeekHelp): Response<JsonObject>
+    @POST("PublishSeekHelp_android")
+    suspend fun PublishSeekHelp(@Body seekHelp: JsonObject): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("DeleteJobServlet")
+    @POST("DeleteJob_android")
     suspend fun DeleteJob(@Field("jobId") jobId: Int): Response<JsonObject>
 
-    @POST("DeleteJobServlet")
-    suspend fun PublishJob(@Body job: Job): Response<JsonObject>
+    @POST("PublishJob_android")
+    suspend fun PublishJob(@Body job: JsonObject): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("AcquireUncheckedJobServlet")
+    @POST("AcquireUncheckedJob_android")
     suspend fun AcquireUncheckedJob(@Field("jobId") jobId: Int): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("AcquireUncheckedJobServlet")
+    @POST("CommitJobScore_android")
     suspend fun CommitJobScore(@Field("jobId") jobId: Int,@Field("studentId") studentId: Int,@Field("score") score: Double): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("AcquireJobDetailForTeacherServlet")
+    @POST("AcquireJobDetailForTeacher_android")
     suspend fun AcquireJobDetailForTeacher(@Field("jobId") jobId: Int): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("SeekScoreOperationServlet")
+    @POST("SeekScoreOperation_android")
     suspend fun SeekScoreOperation(@Field("seekId") seekId: Int,@Field("score") score: Int): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("SolveScoreOperationServlet")
+    @POST("SolveScoreOperation_android")
     suspend fun SolveScoreOperation(@Field("solveId") solveId: Int,@Field("score") score: Int): Response<JsonObject>
 
     @FormUrlEncoded
-    @POST("AcquireHelpDetailForTeacherServlet")
+    @POST("AcquireHelpDetailForTeacher_android")
     suspend fun AcquireHelpDetailForTeacher(@Field("jobId") jobId: Int): Response<JsonObject>
+
+
 }

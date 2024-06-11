@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/main_menu_item_CourseCenter"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/course_center"
         android:title="课程中心" />
     <item
         android:id="@+id/main_menu_item_HopeSquare"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/ping"
         android:title="希望广场" />
     <item
         android:id="@+id/main_menu_item_PersonCenter"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/person_center"
         android:title="个人中心" />
 </menu>

@@ -9,7 +9,7 @@ import com.example.dynamicjobmanagement.R
 import com.example.dynamicjobmanagement.view.CourseCenter.CourseCenterFragment
 import com.example.dynamicjobmanagement.view.HopeSqure.HopeSquareFragment
 import com.example.dynamicjobmanagement.view.PersonCenter.PersonCenterFragment
-import com.example.dynamicjobmanagement.viewmodel.ViewModel.MainViewModel
+import com.example.dynamicjobmanagement.viewmodel.viewModel.MainViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

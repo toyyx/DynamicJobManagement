@@ -1,11 +1,15 @@
 package com.example.dynamicjobmanagement.view.HopeSqure.ViewPager2.PublishAndDetail
 
+
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -14,6 +18,8 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,10 +29,13 @@ import com.example.dynamicjobmanagement.model.model.SeekHelp
 import com.example.dynamicjobmanagement.model.model.SolveHelp
 import com.example.dynamicjobmanagement.model.model.UserType
 import com.example.dynamicjobmanagement.view.Adapter.HopeSquare.SolveHelpListAdapter
-import com.example.dynamicjobmanagement.viewmodel.ViewModel.HopeSquareViewModel.HopeDetailViewModel
 import com.example.dynamicjobmanagement.viewmodel.Factory.HopeSquareFactory.HopeDetailViewModelFactory
 import com.example.dynamicjobmanagement.viewmodel.Repository.UserRepository
+import com.example.dynamicjobmanagement.viewmodel.viewModel.hopeSquareViewModel.HopeDetailViewModel
+import com.google.gson.JsonObject
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 
 class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOperationClickListener{
     private lateinit var course_job_TV: TextView
@@ -36,10 +45,13 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
     private lateinit var likeNum_TV: TextView
     private lateinit var commentNum_TV: TextView
     private lateinit var seekHelpOperation_IB: ImageButton
+    private lateinit var addLike_IV: ImageView
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: SolveHelpListAdapter
     private lateinit var viewModel: HopeDetailViewModel
+    private var originalColor: Int = Color.DKGRAY
+    private var isLiked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +64,7 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
         likeNum_TV=findViewById(R.id.hopeDetail_likeNum_TextView)
         commentNum_TV=findViewById(R.id.hopeDetail_commentNum_TextView)
         seekHelpOperation_IB=findViewById(R.id.hopeDetail_dealOperation_ImageButton)
+        addLike_IV=findViewById(R.id.hopeDetail_addLike_ImageView)
 
         if(UserRepository.getUserType()==UserType.STUDENT)
             seekHelpOperation_IB.visibility=View.GONE
@@ -71,15 +84,16 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
                 0 -> time_TV.text = "今天 ${publishTime.toLocalTime()}"
                 -1 -> time_TV.text = "昨天 ${publishTime.toLocalTime()}"
                 -2 -> time_TV.text = "前天 ${publishTime.toLocalTime()}"
-                else ->time_TV.text = publishTime.toString()
+                else ->time_TV.text = publishTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
             }
         }else
-            time_TV.text = publishTime.toString()
+            time_TV.text = publishTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
 
         seekerName_ET.text=seekHelp.seekerName
         seekContent.text=seekHelp.seekContent
         likeNum_TV.text=seekHelp.likeNumber.toString()
         commentNum_TV.text=seekHelp.commentNumber.toString()
+//        addLike_IV.setColorFilter(R.color.grey4)
 
         // 初始化 ViewModel，传入参数
         viewModel = ViewModelProvider(this, HopeDetailViewModelFactory(seekHelp)).get(
@@ -112,7 +126,7 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
         // 观察ViewModel中的数据变化
         viewModel.addLikeResult.observe(this, Observer { result ->
             result.onSuccess {info ->
-                findViewById<ImageView>(R.id.hopeDetail_addLike_ImageView).setBackgroundColor(Color.RED)
+                zanPerform(addLike_IV)
                 seekHelp.likeNumber++
                 likeNum_TV.text=seekHelp.likeNumber.toString()
                 Toast.makeText(this, info, Toast.LENGTH_SHORT).show()
@@ -150,12 +164,11 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
         })
 
 
-
         findViewById<ImageView>(R.id.hopeDetail_back_ImageView).setOnClickListener {
             finish()
         }
 
-        findViewById<ImageView>(R.id.hopeDetail_addLike_ImageView).setOnClickListener {
+        addLike_IV.setOnClickListener {
             viewModel.onAddLikeClike(seekHelp.seekId)
         }
 
@@ -166,8 +179,6 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
         seekHelpOperation_IB.setOnClickListener {
             onOperationClick(it,seekHelp)
         }
-
-
     }
 
     fun showEditCommentWindow(context: Context,seekHelpId: Int){
@@ -178,6 +189,7 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
         // 创建一个EditText对象并添加到对话框中
         val input = EditText(context)
         input.hint = "请输入你的解决方法"
+        input.maxLines=10
         builder.setView(input)
 
         // 设置确定按钮及其点击事件
@@ -187,23 +199,25 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
                 Toast.makeText(this, "内容不可为空", Toast.LENGTH_SHORT).show()
             }else{
                 if(UserRepository.getUserType()==UserType.STUDENT){
-                    viewModel.onAddCommentClike(SolveHelp(0,
-                        seekHelpId,
-                        UserRepository.getStudentUser()!!.studentId,
-                        UserRepository.getStudentUser()!!.name,
-                        text,
-                        LocalDateTime.now(),
-                        0
-                    ))
+                    // 创建一个空的 JsonObject 对象
+                    val jsonObject = JsonObject()
+                    // 向 JsonObject 对象中添加数据
+                    jsonObject.addProperty("seekId", seekHelpId)
+                    jsonObject.addProperty("replierId", UserRepository.getStudentUser()!!.studentId)
+                    jsonObject.addProperty("replierName", UserRepository.getStudentUser()!!.name)
+                    jsonObject.addProperty("replyContent", text)
+                    jsonObject.addProperty("replyTime", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                    viewModel.onAddCommentClike(jsonObject)
                 }else{
-                    viewModel.onAddCommentClike(SolveHelp(0,
-                        seekHelpId,
-                        UserRepository.getTeacherUser()!!.teacherId,
-                        UserRepository.getTeacherUser()!!.name,
-                        text,
-                        LocalDateTime.now(),
-                        0
-                    ))
+                    // 创建一个空的 JsonObject 对象
+                    val jsonObject = JsonObject()
+                    // 向 JsonObject 对象中添加数据
+                    jsonObject.addProperty("seekId", seekHelpId)
+                    jsonObject.addProperty("replierId", UserRepository.getTeacherUser()!!.teacherId)
+                    jsonObject.addProperty("replierName", UserRepository.getTeacherUser()!!.name)
+                    jsonObject.addProperty("replyContent", text)
+                    jsonObject.addProperty("replyTime", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                    viewModel.onAddCommentClike(jsonObject)
                 }
                 dialog.cancel()
             }
@@ -290,4 +304,44 @@ class HopeDetailActivity : AppCompatActivity() , SolveHelpListAdapter.OnHelpOper
     }
 
 
+    fun zanPerform(view: ImageView){
+
+            view.setImageResource(R.drawable.zan2)
+
+            // 添加缩放动画
+            val anim: Animation = AnimationUtils.loadAnimation(this, R.anim.scale_anim)
+            view.startAnimation(anim)
+
+    }
+
+    private fun performLikeAnimation(view: ImageView) {
+        // Scale up X and Y
+        val scaleUpX = ObjectAnimator.ofFloat(view, "scaleX", 1f, 1.5f)
+        val scaleUpY = ObjectAnimator.ofFloat(view, "scaleY", 1f, 1.5f)
+
+        // Scale down X and Y
+        val scaleDownX = ObjectAnimator.ofFloat(view, "scaleX", 1.5f, 1f)
+        val scaleDownY = ObjectAnimator.ofFloat(view, "scaleY", 1.5f, 1f)
+
+        // Change color
+        val colorChange = ObjectAnimator.ofArgb(
+            view.drawable,
+            "tint",
+            ContextCompat.getColor(this, R.color.grey4),
+            ContextCompat.getColor(this,R.color.pink)
+        )
+
+        // Create an AnimatorSet to play animations together
+        val animatorSet = AnimatorSet()
+        animatorSet.playTogether(scaleUpX, scaleUpY)
+        animatorSet.play(scaleDownX).with(scaleDownY).after(scaleUpX)
+        animatorSet.play(colorChange).after(scaleUpX)
+        animatorSet.duration = 300
+        animatorSet.start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        addLike_IV.setColorFilter(ContextCompat.getColor(this, R.color.grey4))
+    }
 }

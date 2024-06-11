@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.CourseCenter.CourseCenterFragment"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="@color/logo_background"
+    android:clickable="true">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="搜索课程名称"
+        android:inputType="text"
         android:background="@drawable/rounded_edittext"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/courseCenter_RecyclerView"

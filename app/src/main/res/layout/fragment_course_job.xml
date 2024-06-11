@@ -3,18 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CourseCenter.CourseInfo.ViewPager2.CourseJobFragment">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/courseJob_RecyclerView"
+    tools:context=".view.CourseCenter.CourseInfo.viewPager2.CourseJobFragment">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/courseJob_SwipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/courseJob_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/courseJob_addJob_FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/temp_icon"
+        android:src="@drawable/add"
         android:layout_gravity="end|bottom"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="80dp"/>

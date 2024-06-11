@@ -3,6 +3,7 @@ package com.example.dynamicjobmanagement.view.Adapter.PersonCenter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ class SwitchAccountAdapter(private val clickListener: OnAccountClickListener): R
 
     interface OnAccountClickListener {
         fun onAccountClick(user: User)
+        fun onDeleteClick(user: User)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,10 +26,13 @@ class SwitchAccountAdapter(private val clickListener: OnAccountClickListener): R
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val name_TV: TextView = itemView.findViewById(R.id.switchAccount_userName_TextView)
         private val account_TV: TextView = itemView.findViewById(R.id.switchAccount_account_TextView)
-
+        private val delete_IB: ImageButton = itemView.findViewById(R.id.switchAccount_delete_ImageButton)
         fun bind(user: User, clickListener: OnAccountClickListener) {
             name_TV.text = user.name
             account_TV.text = user.account
+            delete_IB.setOnClickListener {
+                clickListener.onDeleteClick(user)
+            }
 
             itemView.setOnClickListener {
                 clickListener.onAccountClick(user)

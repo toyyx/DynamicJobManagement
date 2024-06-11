@@ -4,17 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.HopeSqure.ViewPager2.MySquareFragment">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mySquare_seekHelp_RecyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/mySquare_SwipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mySquare_seekHelp_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
     
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/mySquare_AddSeekHelp_FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/temp_icon"
+        android:src="@drawable/add"
         android:layout_gravity="end|bottom"
         android:layout_marginBottom="80dp"
         android:layout_marginRight="20dp"/>

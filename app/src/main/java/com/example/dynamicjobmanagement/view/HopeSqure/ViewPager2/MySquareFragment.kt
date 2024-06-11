@@ -1,5 +1,6 @@
 package com.example.dynamicjobmanagement.view.HopeSqure.ViewPager2
 
+import com.example.dynamicjobmanagement.model.model.Refreshable
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,19 +12,21 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dynamicjobmanagement.R
 import com.example.dynamicjobmanagement.model.model.SeekHelp
 import com.example.dynamicjobmanagement.view.Adapter.HopeSquare.MySquareSeekHelpListAdapter
 import com.example.dynamicjobmanagement.view.HopeSqure.ViewPager2.PublishAndDetail.HopeDetailActivity
 import com.example.dynamicjobmanagement.view.HopeSqure.ViewPager2.PublishAndDetail.PublishHopeActivity
-import com.example.dynamicjobmanagement.viewmodel.ViewModel.HopeSquareViewModel.MySquareViewModel
+import com.example.dynamicjobmanagement.viewmodel.viewModel.hopeSquareViewModel.MySquareViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-class MySquareFragment : Fragment(), MySquareSeekHelpListAdapter.OnMySeekHelpClickListener{
+class MySquareFragment : Fragment(), MySquareSeekHelpListAdapter.OnMySeekHelpClickListener, Refreshable{
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MySquareSeekHelpListAdapter
     private lateinit var viewModel: MySquareViewModel
+    private lateinit var refresh_SRL: SwipeRefreshLayout
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,11 +50,17 @@ class MySquareFragment : Fragment(), MySquareSeekHelpListAdapter.OnMySeekHelpCli
         adapter = MySquareSeekHelpListAdapter(this)
         recyclerView.adapter = adapter
 
+        refresh_SRL=view.findViewById<SwipeRefreshLayout>(R.id.mySquare_SwipeRefreshLayout)
+        refresh_SRL.setOnRefreshListener {
+            viewModel.refreshMySeekHelp()
+            refresh_SRL.isRefreshing = false
+        }
+
         // 观察ViewModel中的数据变化
         viewModel.acquireMySeekHelpResult.observe(this, Observer { result ->
             result.onSuccess {info ->
                 // 更新Adapter中的数据
-                adapter.setData(viewModel.MyseekHelpList.value!!)
+//                adapter.setData(viewModel.MyseekHelpList.value!!)
                 Toast.makeText(requireContext(), info, Toast.LENGTH_SHORT).show()
             }.onFailure { exception ->
                 Toast.makeText(requireContext(), exception.message, Toast.LENGTH_SHORT).show()
@@ -70,10 +79,19 @@ class MySquareFragment : Fragment(), MySquareSeekHelpListAdapter.OnMySeekHelpCli
         return view
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.refreshMySeekHelp()
+    }
+
     override fun onSeekHelpClick(seekHelp: SeekHelp) {
         val intent = Intent(requireContext(), HopeDetailActivity::class.java)
         intent.putExtra("seekHelp", seekHelp)
         startActivity(intent)
+    }
+
+    override fun refreshData() {
+        viewModel.refreshMySeekHelp()
     }
 
     companion object {

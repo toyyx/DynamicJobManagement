@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dynamicjobmanagement.R
 import com.example.dynamicjobmanagement.model.model.Job
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class CourseJobAdapter(private val clickListener: OnJobClickListener): RecyclerView.Adapter<CourseJobAdapter.ViewHolder>() {
     private var jobList = listOf<Job>()
@@ -31,7 +32,7 @@ class CourseJobAdapter(private val clickListener: OnJobClickListener): RecyclerV
             titleTV.text = job.jobTitle
             if(job.endTime.isAfter(LocalDateTime.now())){
                 titleTV.setTextColor(Color.BLACK)
-                endOrFinTV.text = "截止时间:${job.endTime}"
+                endOrFinTV.text = "截止时间:${job.endTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))}"
                 endOrFinTV.setTextColor(Color.BLACK)
             }else{
                 titleTV.setTextColor(Color.GRAY)

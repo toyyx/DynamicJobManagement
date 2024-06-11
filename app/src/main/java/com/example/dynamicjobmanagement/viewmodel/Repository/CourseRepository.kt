@@ -4,6 +4,7 @@ import com.example.dynamicjobmanagement.model.model.Course
 import com.example.dynamicjobmanagement.model.model.Job
 import com.example.dynamicjobmanagement.model.model.JobAnswer
 import com.example.dynamicjobmanagement.model.network.RetrofitClient
+import com.google.gson.JsonObject
 
 object CourseRepository {
     private var courseIdList:List<String>?=null
@@ -32,13 +33,17 @@ object CourseRepository {
 
     suspend fun acquireCourseJobs(jobIdList:List<String>?) = RetrofitClient.apiService.acquireJobDetail(jobIdList)
 
+//    suspend fun acquireCourseJobs2(courseId:List<String>?) = RetrofitClient.apiService.acquireJobDetail_courseId(jobIdList)
+//
+//    acquireJobDetail_courseId
+
     suspend fun acquireJobAnswer(studentId:Int,jobId:Int) = RetrofitClient.apiService.acquireJobAnswer(studentId,jobId)
 
     suspend fun commitJobAnswer(jobAnswer: JobAnswer) = RetrofitClient.apiService.CommitJobAnswer(jobAnswer)
 
     suspend fun deleteJob(jobId: Int) = RetrofitClient.apiService.DeleteJob(jobId)
 
-    suspend fun publishJob(job: Job) = RetrofitClient.apiService.PublishJob(job)
+    suspend fun publishJob(job: JsonObject) = RetrofitClient.apiService.PublishJob(job)
 
     suspend fun acquireUncheckJob(jobId: Int) = RetrofitClient.apiService.AcquireUncheckedJob(jobId)
 

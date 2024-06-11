@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dynamicjobmanagement.R
 import com.example.dynamicjobmanagement.model.model.SeekHelp
+import java.time.format.DateTimeFormatter
 
 class MySquareSeekHelpListAdapter(private val clickListener: OnMySeekHelpClickListener) : RecyclerView.Adapter<MySquareSeekHelpListAdapter.ViewHolder>() {
     private var seekHelpList = listOf<SeekHelp>()
@@ -29,7 +30,7 @@ class MySquareSeekHelpListAdapter(private val clickListener: OnMySeekHelpClickLi
 
         fun bind(seekHelp: SeekHelp, clickListener: OnMySeekHelpClickListener) {
             course_job_TV.text = "${seekHelp.courseName}-${seekHelp.jobTitle}"
-            time_TV.text = seekHelp.publishTime.toString()
+            time_TV.text = seekHelp.publishTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
             likeNum_TV.text=seekHelp.likeNumber.toString()
             commentNum_TV.text=seekHelp.commentNumber.toString()
 

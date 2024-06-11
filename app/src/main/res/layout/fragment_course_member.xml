@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CourseCenter.CourseInfo.ViewPager2.CourseMemberFragment"
+    tools:context=".view.CourseCenter.CourseInfo.viewPager2.CourseMemberFragment"
     android:orientation="vertical">
 
     <EditText
@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="搜索课程成员"
+        android:inputType="text"
         android:background="@drawable/rounded_edittext"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/courseMember_member_RecyclerView"
