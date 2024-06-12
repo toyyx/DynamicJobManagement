@@ -158,7 +158,7 @@ class CourseJobFragment : Fragment() , CourseJobAdapter.OnJobClickListener,
 
     override fun onResume() {
         super.onResume()
-        Toast.makeText(requireContext(), "onResume", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireContext(), "onResume", Toast.LENGTH_SHORT).show()
         viewModel.refreshCourse()
     }
 

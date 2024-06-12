@@ -39,7 +39,7 @@
             android:id="@+id/squareCenter_search_EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="搜索作业主题/问题内容"
+            android:hint="搜索问题内容"
             android:text="@={viewModel.searchContent}"
             android:inputType="text"
             android:background="@drawable/rounded_edittext"/>

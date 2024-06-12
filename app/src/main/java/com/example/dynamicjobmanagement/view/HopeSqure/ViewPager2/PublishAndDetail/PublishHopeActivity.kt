@@ -55,6 +55,9 @@ class PublishHopeActivity : AppCompatActivity() {
 
 
         if (data != null) {
+            if(CourseRepository.getCourseIdList()!!.get(0)!=data.courseId.toString()){
+                preventFresh+=1
+            }
             viewModel.initSpanner(data.courseId,data.jobId)
         }else{
             viewModel.selectedCoursePosition.value=0

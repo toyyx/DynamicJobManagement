@@ -57,14 +57,14 @@ class SquareCenterFragment : Fragment() , SeekHelpListAdapter.OnSeekHelpClickLis
         binding.lifecycleOwner = viewLifecycleOwner
 
         val spinner=binding.squareCenterCourseSpinner
+        val courseNameList=CourseRepository.getCourseDetailList()?.map { it.courseName }
         // 下拉选项内容
-        val options = CourseRepository.getCourseDetailList()?.map { it.courseName }
+        val options = listOf("所有课程")+(courseNameList ?: emptyList())
         // 创建适配器并设置下拉内容
         val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, options!!)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         // 设置适配器
         spinner.adapter = spinnerAdapter
-
 
         search_ET=binding.root.findViewById(R.id.squareCenter_search_EditText)
 

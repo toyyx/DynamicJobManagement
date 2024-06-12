@@ -14,14 +14,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:gravity="center|start"
             android:text="作业一"
+            android:ellipsize="end"
             android:textSize="20sp"
             android:textColor="@color/black"/>
         <TextView
             android:id="@+id/courseJob_endTime_or_finished_TextView"
-            android:layout_width="0dp"
-            android:layout_weight="3"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="截止时间：2024年5月23日 21:09"
             android:gravity="end|center"/>

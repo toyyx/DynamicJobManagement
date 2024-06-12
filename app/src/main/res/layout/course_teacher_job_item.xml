@@ -14,6 +14,7 @@
             android:gravity="center"
             android:text="作业一"
             android:textSize="20sp"
+            android:ellipsize="end"
             android:textColor="@color/black"
             android:layout_marginLeft="20dp"/>
         <View

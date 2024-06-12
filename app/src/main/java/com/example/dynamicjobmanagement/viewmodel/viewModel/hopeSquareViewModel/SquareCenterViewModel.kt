@@ -68,18 +68,36 @@ class SquareCenterViewModel: ViewModel()  {
 
     fun filterSeekHelp() {
         val selectedCoursePositionValue = selectedCoursePosition.value ?: 0
-        val selectedCourse = CourseRepository.getCourseDetailList()?.get(selectedCoursePositionValue)
+        if (selectedCoursePositionValue==0){
+            val enteredContent=searchContent.value ?:""
+            if(HelpRepository.getSeekHelpList()!=null){
+                if(HelpRepository.getSeekHelpList()!!.size==0){
+                    _filteredSeekHelp.value=listOf()
+                }else{
+                    _filteredSeekHelp.value = HelpRepository.getSeekHelpList()!!.filter {
+                        it.seekContent.contains(enteredContent, ignoreCase = true)
+                    }
+                }
+            }
 
-        val enteredContent=searchContent.value ?:""
 
-        if(HelpRepository.getSeekHelpList()!=null){
-            if (selectedCourse != null) {
-                _filteredSeekHelp.value = HelpRepository.getSeekHelpList()!!.filter {
-                    it.courseName.contains(selectedCourse.courseName, ignoreCase = true)&&
-                            it.seekContent.contains(enteredContent, ignoreCase = true)
+
+        }else{
+            val selectedCourse = CourseRepository.getCourseDetailList()?.get(selectedCoursePositionValue-1)
+
+            val enteredContent=searchContent.value ?:""
+
+            if(HelpRepository.getSeekHelpList()!=null){
+                if (selectedCourse != null) {
+                    _filteredSeekHelp.value = HelpRepository.getSeekHelpList()!!.filter {
+                        it.courseName.contains(selectedCourse.courseName, ignoreCase = true)&&
+                                it.seekContent.contains(enteredContent, ignoreCase = true)
+                    }
                 }
             }
         }
+
+
     }
 
 
